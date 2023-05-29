@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // import {useHistore} from 'react-router-dom';
 import { Link, Route, useNavigate } from "react-router-dom";
 // import {push} from "react-router";
@@ -10,6 +10,7 @@ import {
 } from "antd";
 
 const RegistrationForm = (props) => {
+  let formValue = useRef("");
   const [form] = Form.useForm();
   const onFinish = (values) => {
     console.log('Success:', values);
@@ -73,7 +74,8 @@ const RegistrationForm = (props) => {
     form.resetFields();
   }
   const validForm3 = () => {
-    console.log(form.getFieldsValue())
+    formValue.current = form.getFieldsValue();
+    console.log(formValue)
   }
   const validForm4 = () => {
     form.setFieldsValue({username211: 55})
